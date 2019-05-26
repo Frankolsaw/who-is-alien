@@ -27,11 +27,11 @@ var GameScene = new Phaser.Class({
 
     preload: function ()
     {
-        this.load.image('playerimg', '/game/assets/images/player.png',{ frameWidth: 16, frameHeight: 16 });
-        this.load.image("button", "/game/assets/images/button.png",{ frameWidth: 15, frameHeight: 15 });
+        this.load.image('playerimg', 'https://frankolsaw.github.io/who-is-alien/game/assets/images/player.png',{ frameWidth: 16, frameHeight: 16 });
+        this.load.image("button", "https://frankolsaw.github.io/who-is-alien/game/assets/images/button.png",{ frameWidth: 15, frameHeight: 15 });
 
-        this.load.image("tiles", "/game/assets/images/tilemap.png");
-        this.load.tilemapTiledJSON("map", "/game/assets/mapa.json");
+        this.load.image("tiles", "https://frankolsaw.github.io/who-is-alien/game/assets/images/tilemap.png");
+        this.load.tilemapTiledJSON("map", "https://frankolsaw.github.io/who-is-alien/game/assets/mapa.json");
     },
 
     create: function ()

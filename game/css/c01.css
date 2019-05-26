@@ -1,0 +1,10 @@
+*{
+    margin: 0px;
+    padding:0 px;
+}
+
+#version {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}

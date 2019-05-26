@@ -59,14 +59,14 @@ var GameScene = new Phaser.Class({
 
 
 
-        var map = this.make.tilemap({ key: 'map' });
+        //var map = this.make.tilemap({ key: 'map' });
 
-        var layer = map.createStaticLayer(0, tiles, 0, 0);
+        //var layer = map.createStaticLayer(0, tiles, 0, 0);
     
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     
-        var cursors = this.input.keyboard.createCursorKeys();
-        var controlConfig = {
+        //var cursors = this.input.keyboard.createCursorKeys();
+        /*var controlConfig = {
             camera: this.cameras.main,
             left: cursors.left,
             right: cursors.right,
@@ -75,13 +75,14 @@ var GameScene = new Phaser.Class({
             speed: 0.5
         };
         controls = new Phaser.Cameras.Controls.FixedKeyControl(controlConfig);
-    
+        
         var help = this.add.text(16, 16, 'Arrow keys to scroll', {
             fontSize: '18px',
             padding: { x: 10, y: 5 },
             backgroundColor: '#000000',
             fill: '#ffffff'
-        });
+        }*/
+        );
     },
 
     update: function ()
@@ -108,7 +109,7 @@ var config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true
+            debug: false
         }
     },
     scene: GameScene

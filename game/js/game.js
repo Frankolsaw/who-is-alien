@@ -82,8 +82,8 @@ var GameScene = new Phaser.Class({
             backgroundColor: '#000000',
             fill: '#ffffff'
         }
-        );
-    },*/
+        );*/
+    },
 
     update: function ()
     {

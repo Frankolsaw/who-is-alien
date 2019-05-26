@@ -63,7 +63,7 @@ var GameScene = new Phaser.Class({
 
         //var layer = map.createStaticLayer(0, tiles, 0, 0);
     
-        this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+        //this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     
         //var cursors = this.input.keyboard.createCursorKeys();
         /*var controlConfig = {
@@ -81,9 +81,9 @@ var GameScene = new Phaser.Class({
             padding: { x: 10, y: 5 },
             backgroundColor: '#000000',
             fill: '#ffffff'
-        }*/
+        }
         );
-    },
+    },*/
 
     update: function ()
     {

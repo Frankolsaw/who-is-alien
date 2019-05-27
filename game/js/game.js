@@ -76,7 +76,7 @@
   
     //camera.x = 1890;
     //camera.y = 1134;
-    camera.setPosition(1890, 1134);
+    //camera.setPosition(1890, 1134);
 
     player = this.physics.add.sprite(200, 150, 'playerimg').setScrollFactor(0);
 

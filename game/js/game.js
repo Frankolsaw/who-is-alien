@@ -92,6 +92,15 @@ var game = new Phaser.Game(config);
 
  "use strict";
 
+ var player;
+ var nick = "Franek";
+ var nickText;
+ var buttone;
+ 
+ console.clear();
+ 
+ console.log(Phaser.VERSION);
+
  const config = {
     type: Phaser.CANVAS,
     width: 400,
@@ -124,7 +133,7 @@ var game = new Phaser.Game(config);
   function preload() {
     this.load.image('playerimg', 'https://frankoslaw.github.io/who-is-alien/game/assets/images/player.png',{ frameWidth: 16, frameHeight: 16 });
     this.load.image("button", "https://frankoslaw.github.io/who-is-alien/game/assets/images/button.png",{ frameWidth: 15, frameHeight: 15 });
-    
+
     this.load.image("tiles", "https://frankoslaw.github.io/who-is-alien/game/assets/images/tilemap.png");
     this.load.tilemapTiledJSON("map", "https://frankoslaw.github.io/who-is-alien/game/assets/mapa0.0.1.json");
   }

@@ -92,122 +92,71 @@ var game = new Phaser.Game(config);
 
 "use strict";
 
-var game;
-var gameOptions = {
-    playerSpeed: 120,
-    playerJumpSpeed: {
-        x: 30,
-        y: -100
+var config = {
+    type: Phaser.CANVAS,
+    width: 400,
+    height: 300,
+    backgroundColor: '#2d2d2d',
+    parent: 'phaser-example',
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    pixelArt: true,
+
+    physics: {
+        default: 'arcade',
+        arcade: {
+            debug: false
+        }
     },
-    tileSize: 32,
-    changeDirectionRange: 32,
-    playerGravity: 400
+
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var controls;
+
+var game = new Phaser.Game(config);
+
+function preload ()
+{
+    this.load.image('playerimg', 'https://frankoslaw.github.io/who-is-alien/game/assets/images/player.png',{ frameWidth: 16, frameHeight: 16 });
+    this.load.image("button", "https://frankoslaw.github.io/who-is-alien/game/assets/images/button.png",{ frameWidth: 15, frameHeight: 15 });
+
+    this.load.image("tiles1", "https://frankoslaw.github.io/who-is-alien/game/assets/images/tilemap.png");
+    this.load.tilemapTiledJSON("map1", "https://frankoslaw.github.io/who-is-alien/game/assets/mapa.json");
 }
-window.onload = function() {
-    var gameConfig = {
-        width: 800,
-        height: 320,
-        physics: {
-            default: "arcade",
-            arcade: {
-                gravity: {
-                    y: 0
-                }
-            }
-        },
-        scene: [playGame]
-    }
-    game = new Phaser.Game(gameConfig);
-    window.focus()
-    resize();
-    window.addEventListener("resize", resize, false);
+
+function create ()
+{
+    var map1 = this.make.tilemap({ key: 'map1' });
+    var tileset1 = map1.addTilesetImage('Game map 1', 'tiles1');
+
+    var layer1 = map1.createStaticLayer('World1', tileset1, 0, 0);
+    //var layer2 = map1.createStaticLayer('World1', tileset1, 0, 0);
+
+
+    var cursors = this.input.keyboard.createCursorKeys();
+
+    var controlConfig = {
+        camera: this.cameras.main,
+        left: cursors.left,
+        right: cursors.right,
+        speed: 0.5
+    };
+
+    controls = new Phaser.Cameras.Controls.FixedKeyControl(controlConfig);
+
+    this.cameras.main.setBounds(0, 0,layer1.x + layer1.width, 0);
 }
-class playGame extends Phaser.Scene{
-    constructor(){
-        super("PlayGame");
-    }
-    preload(){
-        this.load.tilemapTiledJSON("map", "map.json");
-        this.load.image("tiles", "tiles.png");
-        this.load.image("player", "player.png");
-    }
-    create(){
-        this.tilePoint = null;
-        this.map = this.make.tilemap({
-            key: "map"
-        });
-        var tileSet = this.map.addTilesetImage("tileset01", "tiles");
-        this.levelLayer = this.map.createDynamicLayer("myLevel", tileSet);
-        this.map.setCollisionBetween(1, 2);
-        this.player = this.physics.add.sprite(48, 226, "player");
-        this.player.isJumping = false;
-        this.player.direction = 1;
-        this.player.body.gravity.y = gameOptions.playerGravity;
-        this.input.on("pointerdown", this.addBlock, this);
-    }
-    update(){
-        this.player.body.velocity.x = 0;
-        this.physics.world.collide(this.player, this.levelLayer, this.movePlayer, null, this);
-    }
-    movePlayer(){
-        if(this.player.body.blocked.down){
-            this.player.body.velocity.x = gameOptions.playerSpeed * this.player.direction;
-            this.player.isJumping = false;
-        }
-        if(this.player.body.blocked.right &amp;&amp; this.player.direction == 1){
-            if((!this.map.getTileAtWorldXY(this.player.x + gameOptions.tileSize, this.player.y - gameOptions.tileSize) &amp;&amp; !this.map.getTileAtWorldXY(this.player.x, this.player.y - gameOptions.tileSize)) || this.player.isJumping){
-                this.jump();
-            }
-            else{
-                this.player.direction *= -1;
-            }
-        }
-        if(this.player.body.blocked.left &amp;&amp; this.player.direction == -1){
-            if((!this.map.getTileAtWorldXY(this.player.x - gameOptions.tileSize, this.player.y - gameOptions.tileSize) &amp;&amp; !this.map.getTileAtWorldXY(this.player.x, this.player.y - gameOptions.tileSize)) || this.player.isJumping){
-                this.jump();
-            }
-            else{
-                this.player.direction *= -1;
-            }
-        }
-    }
-    addBlock(e){
-        var distanceX = e.x - this.player.x;
-        var distanceY = e.y - this.player.y;
-        if ((distanceX * distanceX + distanceY * distanceY) < gameOptions.changeDirectionRange * gameOptions.changeDirectionRange){
-            this.player.direction *= -1;
-        }
-        else{
-            if(!this.map.getTileAtWorldXY(e.x, e.y)){
-                if(this.tilePoint){
-                    this.map.removeTileAtWorldXY(this.tilePoint.x, this.tilePoint.y);
-                }
-                this.map.putTileAtWorldXY(2, e.x, e.y);
-                this.tilePoint = new Phaser.Math.Vector2(e.x, e.y);
-            }
-        }
-    }
-    jump(){
-        this.player.body.velocity.y = gameOptions.playerJumpSpeed.y;
-        this.player.body.velocity.x = gameOptions.playerJumpSpeed.x * this.player.direction;
-        this.player.isJumping = true;
-    }
+
+function update (time, delta)
+{
+    controls.update(delta);
 }
-function resize() {
-    var canvas = document.querySelector("canvas");
-    var windowWidth = window.innerWidth;
-    var windowHeight = window.innerHeight;
-    var windowRatio = windowWidth / windowHeight;
-    var gameRatio = game.config.width / game.config.height;
-    if(windowRatio < gameRatio){
-        canvas.style.width = windowWidth + "px";
-        canvas.style.height = (windowWidth / gameRatio) + "px";
-    }
-    else{
-        canvas.style.width = (windowHeight * gameRatio) + "px";
-        canvas.style.height = windowHeight + "px";
-    }
-}
+
 
 
 

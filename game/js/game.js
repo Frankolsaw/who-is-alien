@@ -63,10 +63,11 @@
     // tile camera position 30 18
     const camera = this.cameras.main;
 
-    walls.setCollisionBetween(1, 100);
+    map.setCollisionBetween(1, 100);
     this.physics.add.collider(player, walls);
-    
+
     const cursors = this.input.keyboard.createCursorKeys();
+
     controls = new Phaser.Cameras.Controls.FixedKeyControl({
       camera: camera,
       left: cursors.left,

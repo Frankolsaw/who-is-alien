@@ -60,7 +60,7 @@
   
     const walls = map.createStaticLayer("walls", tileset, 0, 0);
     const ground = map.createStaticLayer("ground", tileset, 0, 0);
-  
+    // tile camera position 30 18
     const camera = this.cameras.main;
   
     const cursors = this.input.keyboard.createCursorKeys();
@@ -72,7 +72,7 @@
       down: cursors.down,
       speed: 0.15
     });
-    camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    camera.setBounds(1890, 1134, map.widthInPixels, map.heightInPixels);
 
     player = this.physics.add.sprite(200, 150, 'playerimg').setScrollFactor(0);
 

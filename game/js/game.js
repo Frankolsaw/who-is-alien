@@ -62,7 +62,10 @@
     const ground = map.createStaticLayer("ground", tileset, 0, 0);
     // tile camera position 30 18
     const camera = this.cameras.main;
-  
+
+    walls.setCollisionBetween(1, 100);
+    this.physics.add.collider(player, walls);
+    
     const cursors = this.input.keyboard.createCursorKeys();
     controls = new Phaser.Cameras.Controls.FixedKeyControl({
       camera: camera,
@@ -99,7 +102,7 @@
             this.scale.startFullscreen();
         }
         }, this);
-        this.physics.world.collide(player, walls, null, this);
+        
 
   }
   

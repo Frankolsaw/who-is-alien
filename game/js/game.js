@@ -99,6 +99,8 @@
             this.scale.startFullscreen();
         }
         }, this);
+        this.physics.world.collide(player, walls, null, this);
+
   }
   
   function update(time, delta) {

@@ -132,9 +132,9 @@ function preload ()
 function create ()
 {
     var map1 = this.make.tilemap({ key: 'map1' });
-    var tileset1 = map1.addTilesetImage('Game map 1', 'tiles1');
+    var tileset1 = map1.addTilesetImage('Game map 1', 'tiles1',63,63);
 
-    var layer1 = map1.createStaticLayer('World1', tileset1, 0, 0);
+    var layer1 = map1.createStaticLayer('World1', tileset1, 63, 63);
     //var layer2 = map1.createStaticLayer('World1', tileset1, 0, 0);
 
 

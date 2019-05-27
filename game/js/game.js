@@ -176,15 +176,15 @@ var game = new Phaser.Game(config);
     //  })
     //  .setScrollFactor(0);
 
-    player = this.physics.add.sprite(200 + camera.x, 150 + camera.y, 'playerimg');
+    player = this.physics.add.sprite(200, 150, 'playerimg');
 
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
 
-        nickText = this.add.text(16 + camera.x, 16 + camera.y, 'Nick : ', { fontSize: '16px', fill: '#ffffff'});
+        nickText = this.add.text(16, 16, 'Nick : ', { fontSize: '16px', fill: '#ffffff'});
         nickText.setText('Nick : ' + nick);
 
-        var button = this.add.image(400 - 20 + camera.x, 20 + camera.y, 'button', 0).setOrigin(1, 0).setInteractive();
+        var button = this.add.image(400 - 20, 20, 'button', 0).setOrigin(1, 0).setInteractive();
     
         button.on('pointerdown', function() {
         if (this.scale.isFullscreen)
@@ -196,6 +196,9 @@ var game = new Phaser.Game(config);
             this.scale.startFullscreen();
         }
         }, this); 
+        player.fixedToCamera = true;
+        nickText.fixedToCamera = true;
+        button.fixedToCamera = true;
   }
   
   function update(time, delta) {

@@ -34,12 +34,12 @@
         height: 300
     },
 
-    physics: {
-        default: 'arcade',
-        arcade: {
-            debug: false
-        }
-    }
+     physics: {
+         default: "arcade",
+         arcade: {
+             gravity: { y: 0 } // Top down game, so no gravity
+         }
+     }
   };
   
   const game = new Phaser.Game(config);
@@ -103,32 +103,32 @@
             this.scale.startFullscreen();
         }
         }, this);
-      this.cameras.main.startFollow(player);    
+
+      worldLayer.setCollisionByProperty({ collides: true });
 
   }
   
 function update() {
     var cursors = this.input.keyboard.createCursorKeys();
 
+    player.body.setVelocity(0);
+
+    // Horizontal movement
     if (cursors.left.isDown) {
-       player.setVelocityX(-160);
-    }
-    else if (cursors.right.isDown) {
-       player.setVelocityX(160);
-    }
-    else {
-       player.setVelocityX(0);
+        player.body.setVelocityX(-100);
+    } else if (cursors.right.isDown) {
+        player.body.setVelocityX(100);
     }
 
+    // Vertical movement
     if (cursors.up.isDown) {
-       player.setVelocityY(-160);
+        player.body.setVelocityY(-100);
+    } else if (cursors.down.isDown) {
+        player.body.setVelocityY(100);
     }
-    else if (cursors.down.isDown) {
-       player.setVelocityY(160);
-    }
-    else {
-       player.setVelocityY(0);
-    }
+
+    // Normalize and scale the velocity so that player can't move faster along a diagonal
+    player.body.velocity.normalize().scale(speed);
 
         this.input.on('pointermove', function (pointer) {
              let cursor = pointer;

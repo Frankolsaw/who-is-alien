@@ -135,9 +135,9 @@ function update() {
 
         this.input.on('pointermove', function (pointer) {
              let cursors = pointer;
-             let angle = Phaser.Math.Angle.Between(player.x, player.y, cursors.x, cursors.y) + 90
+             let angle = Phaser.Math.Angle.Between(player.x, player.y, cursors.x, cursors.y) + 90;
              player.rotation = angle;
         }, this);
 
-    player.body.velocity.normalize().scale(speed);
+    //player.body.velocity.normalize().scale(speed);
 }

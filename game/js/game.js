@@ -109,7 +109,7 @@ let player;
 
       const camera = this.cameras.main;
       camera.startFollow(player);
-      camera.setBounds(0, 0
+      camera.setBounds(0, 0);
 
   }
   

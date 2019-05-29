@@ -50,7 +50,7 @@
     this.load.image("button", "https://frankoslaw.github.io/who-is-alien/game/assets/images/button.png",{ frameWidth: 15, frameHeight: 15 });
 
     this.load.image("tiles", "https://frankoslaw.github.io/who-is-alien/game/assets/images/tilemap.png");
-    this.load.tilemapTiledJSON("map", "https://frankoslaw.github.io/who-is-alien/game/assets/mapa0.0.1.json");
+    this.load.tilemapTiledJSON("map", "https://frankoslaw.github.io/who-is-alien/game/assets/mapa0.0.2.json");
   }
   
   function create() {
@@ -111,27 +111,23 @@ function update() {
     var cursors = this.input.keyboard.createCursorKeys();
 
     if (cursors.left.isDown) {
-       // player.setVelocityX(-160);
-        this.player.x -= 160;
+       player.setVelocityX(-160);
     }
     else if (cursors.right.isDown) {
-       // player.setVelocityX(160);
-        this.player.x += 160;
+       player.setVelocityX(160);
     }
     else {
-       // player.setVelocityX(0);
+       player.setVelocityX(0);
     }
 
     if (cursors.up.isDown) {
-       // player.setVelocityY(-160);
-        this.player.x -= 160;
+       player.setVelocityY(-160);
     }
     else if (cursors.down.isDown) {
-        //player.setVelocityY(160);
-        this.player.x += 160;
+       player.setVelocityY(160);
     }
     else {
-       // player.setVelocityY(0);
+       player.setVelocityY(0);
     }
 
         this.input.on('pointermove', function (pointer) {
@@ -139,7 +135,4 @@ function update() {
              let angle = Phaser.Math.Angle.Between(player.x, player.y, cursor.x, cursor.y) + 90
              player.rotation = angle;
         }, this);
-
-    console.log("x" + player.x);
-    console.log("y" + player.y);
 }

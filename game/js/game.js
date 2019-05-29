@@ -85,8 +85,8 @@
 
     player = this.physics.add.sprite(1890, 1134, 'playerimg').setScrollFactor(0);
 
-      player.setBounce(0.2);.setBounce(0.2);
-      player.setCollideWorldBounds(true);.setCollideWorldBounds(true);
+      player.setBounce(0.2);
+      player.setCollideWorldBounds(true);
 
         nickText = this.add.text(16, 16, 'Nick : ', { fontSize: '16px', fill: '#ffffff'}).setScrollFactor(0);
         nickText.setText('Nick : ' + nick);

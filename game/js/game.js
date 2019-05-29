@@ -1,6 +1,6 @@
  "use strict";
 
- var player;
+let player;
  var nicki = [
      "Bogdan",
      "Zbyszek",

@@ -85,8 +85,8 @@
 
     player = this.physics.add.sprite(1890, 1134, 'playerimg').setScrollFactor(0);
 
-        player.setBounce(0.2);
-        player.setCollideWorldBounds(true);
+      player.setBounce(0.2);.setBounce(0.2);
+      player.setCollideWorldBounds(true);.setCollideWorldBounds(true);
 
         nickText = this.add.text(16, 16, 'Nick : ', { fontSize: '16px', fill: '#ffffff'}).setScrollFactor(0);
         nickText.setText('Nick : ' + nick);
@@ -103,7 +103,7 @@
             this.scale.startFullscreen();
         }
         }, this);
-      this.camera.startFollow(this.player)
+      camera.startFollow(clown, false, 0.5, 0.5);
         
 
   }
@@ -117,6 +117,7 @@
              player.rotation = angle;
         }, this);
 }
+cursors = this.input.keyboard.createCursorKeys();
 
 if (cursors.left.isDown) {
     player.setVelocityX(-160);

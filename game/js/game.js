@@ -63,27 +63,27 @@
     // tile camera position 30 18
     const camera = this.cameras.main;
 
-    map.setCollisionBetween(1, 100);
-    this.physics.add.collider(player, walls);
+     
 
     const cursors = this.input.keyboard.createCursorKeys();
 
-    controls = new Phaser.Cameras.Controls.FixedKeyControl({
+    /*controls = new Phaser.Cameras.Controls.FixedKeyControl({
       camera: camera,
       left: cursors.left,
       right: cursors.right,
       up: cursors.up,
       down: cursors.down,
       speed: 0.15
-    });
+    });*/
+
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
   
     //camera.x = 1890;
     //camera.y = 1134;
-    camera.scrollX += 1890;
-    camera.scrollY += 1134;
+    //player.scrollX += 1890;
+    //player.scrollY += 1134;
 
-    player = this.physics.add.sprite(200, 150, 'playerimg').setScrollFactor(0);
+    player = this.physics.add.sprite(1890, 1134, 'playerimg').setScrollFactor(0);
 
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
@@ -103,6 +103,7 @@
             this.scale.startFullscreen();
         }
         }, this);
+      game.camera.follow(player);
         
 
   }
@@ -117,7 +118,27 @@
              let angle = Phaser.Math.Angle.Between(player.x, player.y, cursor.x, cursor.y) + 90
              player.rotation = angle;
         }, this);
-  }
+}
+
+if (cursors.left.isDown) {
+    player.setVelocityX(-160);
+}
+else if (cursors.right.isDown) {
+    player.setVelocityX(160);
+}
+else {
+    player.setVelocityX(0);
+}
+
+if (cursors.up.isDown) {
+    player.setVelocityY(-160);
+}
+else if (cursors.down.isDown) {
+    player.setVelocityY(160);
+}
+else {
+    player.setVelocityY(0);
+}
 
 
 

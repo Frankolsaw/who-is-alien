@@ -103,7 +103,7 @@
             this.scale.startFullscreen();
         }
         }, this);
-      camera.startFollow(clown, false, 0.5, 0.5);
+      camera.startFollow(player, false, 0.5, 0.5);
         
 
   }

@@ -103,15 +103,13 @@
             this.scale.startFullscreen();
         }
         }, this);
-      game.camera.follow(player);
+      this.camera.startFollow(this.player)
         
 
   }
   
   function update(time, delta) {
     controls.update(delta);
-
-    var cursors = this.input.keyboard.createCursorKeys();
 
         this.input.on('pointermove', function (pointer) {
              let cursor = pointer;

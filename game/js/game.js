@@ -111,23 +111,17 @@ function update() {
     var cursors = this.input.keyboard.createCursorKeys();
 
     if (cursors.left.isDown) {
-        player.setVelocityX(-160);
+        player.X(-160);
     }
     else if (cursors.right.isDown) {
-        player.setVelocityX(160);
-    }
-    else {
-        player.setVelocityX(0);
+        player.X(160);
     }
 
     if (cursors.up.isDown) {
-        player.setVelocityY(-160);
+        player.Y(-160);
     }
     else if (cursors.down.isDown) {
-        player.setVelocityY(160);
-    }
-    else {
-        player.setVelocityY(0);
+        player.Y(160);
     }
 
         this.input.on('pointermove', function (pointer) {

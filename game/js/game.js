@@ -117,7 +117,7 @@
              player.rotation = angle;
         }, this);
 }
-cursors = this.input.keyboard.createCursorKeys();
+var cursors = this.input.keyboard.createCursorKeys();
 
 if (cursors.left.isDown) {
     player.setVelocityX(-160);

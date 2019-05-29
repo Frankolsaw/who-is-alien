@@ -82,7 +82,7 @@ let player;
     //player.scrollX += 1890;
     //player.scrollY += 1134;
 
-      player = this.physics.add.sprite(0, 0, 'playerimg');
+      player = this.physics.add.sprite(1890, 1134, 'playerimg');
 
       player.setBounce(0.2);
       //player.setCollideWorldBounds(true);

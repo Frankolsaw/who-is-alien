@@ -108,7 +108,29 @@
 
   }
   
-  function update(time, delta) {
+function update(time, delta) {
+    var cursors = this.input.keyboard.createCursorKeys();
+
+    if (cursors.left.isDown) {
+        player.setVelocityX(-160);
+    }
+    else if (cursors.right.isDown) {
+        player.setVelocityX(160);
+    }
+    else {
+        player.setVelocityX(0);
+    }
+
+    if (cursors.up.isDown) {
+        player.setVelocityY(-160);
+    }
+    else if (cursors.down.isDown) {
+        player.setVelocityY(160);
+    }
+    else {
+        player.setVelocityY(0);
+    }
+
     controls.update(delta);
 
         this.input.on('pointermove', function (pointer) {
@@ -117,27 +139,3 @@
              player.rotation = angle;
         }, this);
 }
-var cursors = Game.input.keyboard.createCursorKeys();
-
-if (cursors.left.isDown) {
-    player.setVelocityX(-160);
-}
-else if (cursors.right.isDown) {
-    player.setVelocityX(160);
-}
-else {
-    player.setVelocityX(0);
-}
-
-if (cursors.up.isDown) {
-    player.setVelocityY(-160);
-}
-else if (cursors.down.isDown) {
-    player.setVelocityY(160);
-}
-else {
-    player.setVelocityY(0);
-}
-
-
-

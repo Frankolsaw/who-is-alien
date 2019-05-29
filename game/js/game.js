@@ -133,12 +133,11 @@ function update() {
         player.body.setVelocityY(100);
     }
 
-    // Normalize and scale the velocity so that player can't move faster along a diagonal
-    player.body.velocity.normalize().scale(speed);
-
         this.input.on('pointermove', function (pointer) {
              let cursor = pointer;
              let angle = Phaser.Math.Angle.Between(player.x, player.y, cursor.x, cursor.y) + 90
              player.rotation = angle;
         }, this);
+
+    player.body.velocity.normalize().scale(speed);
 }

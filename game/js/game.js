@@ -104,7 +104,7 @@
         }
         }, this);
 
-      worldLayer.setCollisionByProperty({ collides: true });
+      walls.setCollisionByProperty({ collides: true });
 
   }
   

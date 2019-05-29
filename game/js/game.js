@@ -106,9 +106,12 @@ let player;
 
       walls.setCollisionByProperty({ collides: true });
 
+      this.physics.add.collider(player, walls);
+
   }
   
 function update() {
+    const speed = 175;
     var cursors = this.input.keyboard.createCursorKeys();
 
     player.body.setVelocity(0);

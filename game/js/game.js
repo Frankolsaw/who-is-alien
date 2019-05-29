@@ -61,8 +61,7 @@ let player;
     const walls = map.createStaticLayer("walls", tileset, 0, 0);
     const ground = map.createStaticLayer("ground", tileset, 0, 0);
     // tile camera position 30 18
-    const camera = this.cameras.main;
-
+   // const camera = this.cameras.main;
      
 
     const cursors = this.input.keyboard.createCursorKeys();
@@ -76,7 +75,7 @@ let player;
       speed: 0.15
     });*/
 
-    camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    //camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
   
     //camera.x = 1890;
     //camera.y = 1134;
@@ -107,6 +106,10 @@ let player;
       walls.setCollisionByProperty({ collides: true });
 
       this.physics.add.collider(player, walls);
+
+      const camera = this.cameras.main;
+      camera.startFollow(player);
+      camera.setBounds(0, 0
 
   }
   

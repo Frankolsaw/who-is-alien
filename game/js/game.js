@@ -108,7 +108,7 @@
 
   }
   
-function update(time, delta) {
+function update() {
     var cursors = this.input.keyboard.createCursorKeys();
 
     if (cursors.left.isDown) {
@@ -130,8 +130,6 @@ function update(time, delta) {
     else {
         player.setVelocityY(0);
     }
-
-    controls.update(delta);
 
         this.input.on('pointermove', function (pointer) {
              let cursor = pointer;

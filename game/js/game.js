@@ -83,7 +83,7 @@
     //player.scrollX += 1890;
     //player.scrollY += 1134;
 
-      player = this.physics.add.sprite(1890, 1134, 'playerimg');
+      player = this.physics.add.sprite(0, 0, 'playerimg');
 
       player.setBounce(0.2);
       player.setCollideWorldBounds(true);
@@ -136,4 +136,7 @@ function update() {
              let angle = Phaser.Math.Angle.Between(player.x, player.y, cursor.x, cursor.y) + 90
              player.rotation = angle;
         }, this);
+
+    console.log("x" + player.x);
+    console.log("y" + player.y);
 }

@@ -57,9 +57,10 @@ let player;
     const map = this.make.tilemap({ key: "map" });
 
     const tileset = map.addTilesetImage("test", "tiles");
-  
-    const walls = map.createStaticLayer("walls", tileset, 0, 0);
+   
     const ground = map.createStaticLayer("ground", tileset, 0, 0);
+    const walls = map.createStaticLayer("walls", tileset, 0, 0);
+    //const ground = map.createStaticLayer("ground", tileset, 0, 0);
     // tile camera position 30 18
    // const camera = this.cameras.main;
      
